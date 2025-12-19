@@ -13,7 +13,6 @@ st.set_page_config(page_title="Customer Churn Prediction", layout="wide")
 bundle = joblib.load("logistic.joblib")
 
 model = bundle["model"]
-scaler = bundle["scaler"]
 encoder = bundle["encoder"]
 num_cols = bundle["num_cols"]
 cat_cols = bundle["cat_cols"]
@@ -101,7 +100,6 @@ encoded_cat = pd.DataFrame(
 )
 
 X = pd.concat([data[num_cols], encoded_cat], axis=1)
-X[num_cols] = scaler.transform(X[num_cols])
 
 # Pastikan urutan fitur sama
 X = X[feature_names]
