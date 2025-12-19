@@ -10,7 +10,7 @@ st.set_page_config(page_title="Customer Churn Prediction", layout="wide")
 # ======================================================
 # LOAD MODEL BUNDLE
 # ======================================================
-bundle = joblib.load("logistic.joblib")
+bundle = joblib.load("random_forest_tuning.joblib")
 
 model = bundle["model"]
 encoder = bundle["encoder"]
