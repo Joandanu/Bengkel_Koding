@@ -180,6 +180,6 @@ with tab3:
 
     # Plot
     fig, ax = plt.subplots(figsize=(8, 10))
-    fi_df.head(20).plot(kind='barh', x='Feature', y='Importance', ax=ax)
+    fi_df.head(10).plot(kind='barh', x='Feature', y='Importance', ax=ax)
     plt.gca().invert_yaxis()
     st.pyplot(fig)
