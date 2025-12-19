@@ -162,10 +162,7 @@ with tab2:
     cm = confusion_matrix(y_test, y_pred_test)
 
     fig, ax = plt.subplots()
-    ConfusionMatrixDisplay(
-        cm,
-        display_labels=["Tidak Churn", "Churn"]).plot(ax=ax)
-
+    ConfusionMatrixDisplay(cm, display_labels=["Tidak Churn", "Churn"]).plot(ax=ax)
     st.pyplot(fig)
     
 # ---------- TAB 3: KOEFISIEN ----------
