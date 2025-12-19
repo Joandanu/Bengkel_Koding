@@ -125,7 +125,7 @@ st.subheader("Analisis Model")
 tab1, tab2, tab3 = st.tabs([
     "Evaluasi Model",
     "Confusion Matrix",
-    "Koefisien Logistic Regression"
+    "Feature Importance"
 ])
 
 # ---------- TAB 1: Evaluasi Model ----------
@@ -170,13 +170,16 @@ with tab2:
     
 # ---------- TAB 3: KOEFISIEN ----------
 with tab3:
-    coef_df = pd.DataFrame({
+    importances = model.feature_importances_
+    fi_df = pd.DataFrame({
         "Feature": feature_names,
-        "Coefficient": model.coef_[0]
-    }).sort_values(by="Coefficient", ascending=False)
+        "Importance": importances
+    }).sort_values(by="Importance", ascending=False)
 
-    st.write("Fitur yang meningkatkan peluang **CHURN**:")
-    st.dataframe(coef_df.head(10))
+    st.dataframe(fi_df)
 
-    st.write("Fitur yang menurunkan peluang **CHURN**:")
-    st.dataframe(coef_df.tail(10))
+    # Plot
+    fig, ax = plt.subplots(figsize=(8, 10))
+    fi_df.head(20).plot(kind='barh', x='Feature', y='Importance', ax=ax)
+    plt.gca().invert_yaxis()
+    st.pyplot(fig)
