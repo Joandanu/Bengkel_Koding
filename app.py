@@ -161,7 +161,7 @@ with tab2:
 
     cm = confusion_matrix(y_test, y_pred_test)
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(4, 8))
     ConfusionMatrixDisplay(cm, display_labels=["Tidak Churn", "Churn"]).plot(ax=ax)
     st.pyplot(fig)
     
@@ -176,7 +176,7 @@ with tab3:
     st.dataframe(fi_df)
 
     # Plot
-    fig, ax = plt.subplots(figsize=(8, 10))
+    fig, ax = plt.subplots(figsize=(4, 8))
     fi_df.head(10).plot(kind='barh', x='Feature', y='Importance', ax=ax)
     plt.gca().invert_yaxis()
     st.pyplot(fig)
